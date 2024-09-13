@@ -1,11 +1,10 @@
-import { Pokemon } from "@/pokemons";
 import { Metadata } from "next";
+import { Pokemon } from "@/pokemons";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 interface Props {
-  params: { id: string };
+    params:{name:string}
 }
-
 //! Solo se ejecuta en build time
 export async function generateStaticParams() {
   const static151Pokemos = Array.from({length:151}).map((v,i)=> `${i + 1}` );
@@ -15,12 +14,11 @@ export async function generateStaticParams() {
   }))
   
 }
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const pokemon = await getPokemon(params.id);
+    const pokemon = await getPokemon(params.name);
     return {
-      title: `#${pokemon.id} - ${pokemon.name}`,
+      title: `#${pokemon.name} - ${pokemon.name}`,
       description: `Página del pokémon: ${pokemon.name}`,
     };
   } catch (error) {
@@ -31,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const getPokemon = async (id: string): Promise<Pokemon> => {
+const getPokemon = async (name: string): Promise<Pokemon> => {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
       //cache: 'force-cache',
       next:{
         revalidate: 60 * 60 * 30 * 6
@@ -51,14 +49,13 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
   }
 }
 
-export default async function PokemonIdPage({ params }: Props) {
-  const pokemon = await getPokemon(params.id);
+export default async function NamePokemonPage({ params }: Props){
+  const pokemon = await getPokemon(params.name);
 
   if (!pokemon) {
     notFound();
   }
 
-  
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
     <div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white bg-clip-border  shadow-lg  p-3">
@@ -159,6 +156,5 @@ export default async function PokemonIdPage({ params }: Props) {
       </div>
     </div>
   </div>
-  
   );
 }
