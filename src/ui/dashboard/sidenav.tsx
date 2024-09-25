@@ -3,7 +3,7 @@ import NavLinks from '@/ui/dashboard/navlink';
 import { GrupoAccel } from '../GrupoAccel';
 import { HiOutlinePower,HiOutlineClipboardDocumentList} from 'react-icons/hi2';
 import { HiOutlineHome,HiOutlineCube, HiOutlineDocumentText, HiOutlineTag, HiOutlineShoppingCart } from "react-icons/hi"
-import { IoFootball } from 'react-icons/io5';
+import { IoFootball, IoHeartOutline } from 'react-icons/io5';
 const links = [
   {name:'Home', href:'/dashboard', icon: <HiOutlineHome className="w-6"/>},
   {name:'Iventario', href:'/dashboard/inventario', icon: <HiOutlineCube className="w-6"/>},
@@ -11,7 +11,8 @@ const links = [
   {name:'Facturas',href:'/dashboard/facturas',icon:<HiOutlineDocumentText className="w-6"/>},
   {name:'Ventas',href:'/dashboard/ventas',icon:<HiOutlineTag className="w-6"/>},
   {name:'Carrito',href:'/dashboard/carrito',icon:<HiOutlineShoppingCart className="w-6"/>},
-  {name:'Pokemos',href:'/dashboard/pokemons',icon:<IoFootball className="w-6"/>}
+  {name:'Pokemos',href:'/dashboard/pokemons',icon:<IoFootball className="w-6"/>},
+  {name:'Favoritos',href:'/dashboard/favorites',icon:<IoHeartOutline className="w-6"/>}
 ]
 
 export default function SideNav() {

@@ -1,4 +1,5 @@
 import SideNav from "@/ui/dashboard/sidenav";
+import { Providers } from "@/store/Providers";
 
 export default function DashboardLayout({children}:{children: React.ReactNode}) {
     
@@ -8,7 +9,10 @@ export default function DashboardLayout({children}:{children: React.ReactNode}) 
           <SideNav/>
       </div>
       <div className="flex-grow p-6 md:overflow-y-auto md:p-12  bg-[#141332]">
-            {children}
+            <Providers >
+              {children}
+            </Providers>
+            
       </div>
     </div>
   );
