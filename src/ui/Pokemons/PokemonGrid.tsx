@@ -7,7 +7,7 @@ interface Props {
 
 export const PokemonGrid = ({pokemons}:Props) => {
   return (
-    <div className="flex flex-wrap gap-10  items-center justify-center">
+    <div className="w-full flex flex-wrap gap-10  items-center justify-center">
        {
         pokemons.map(pokemon => (
 
